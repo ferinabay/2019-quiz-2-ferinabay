@@ -103,6 +103,13 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnTod
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.action_logout) {
+            session.removeSession();
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
