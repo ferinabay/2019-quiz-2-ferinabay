@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import id.ac.polinema.todoretrofit.R;
+import id.ac.polinema.todoretrofit.Settings;
 import id.ac.polinema.todoretrofit.models.Todo;
 
 public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> {
@@ -22,11 +24,13 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> {
     private List<Todo> items;
     private OnTodoClickedListener listener;
     private OnTodoClickedDeleteListener listener1;
+    Settings settings;
 
     public TodoAdapter(Context context, OnTodoClickedListener listener, OnTodoClickedDeleteListener listener1) {
         this.context = context;
         this.listener = listener;
         this.listener1 = listener1;
+        this.settings = new Settings(context);
     }
 
     public void setItems(List<Todo> items) {
@@ -59,10 +63,15 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
         TextView todoText;
-        public ViewHolder(@NonNull View itemView) {
+
+        public ViewHolder( View itemView) {
             super(itemView);
             todoText = itemView.findViewById(R.id.text_todo);
+
+            float textSize = settings.getTextSize();
+            todoText.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
         }
 
         public void bind(final Todo todo, final OnTodoClickedListener listener, final OnTodoClickedDeleteListener listener1) {

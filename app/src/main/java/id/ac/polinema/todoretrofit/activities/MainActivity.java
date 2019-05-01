@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnTod
     private Session session;
     private TodoService service;
     private TodoAdapter adapter;
+
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +125,9 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnTod
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            finish();
             return true;
         }
         if (id == R.id.action_logout) {

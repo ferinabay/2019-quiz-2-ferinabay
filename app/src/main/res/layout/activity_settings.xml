@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SettingsActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/topBar">
+
+            <android.support.design.widget.BottomNavigationView
+                android:id="@+id/upt_nav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="560dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10px"
+                    android:paddingTop="10dp"
+                    android:text="Settings"
+                    android:textColor="#000"
+                    android:textSize="10pt" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="58dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="#40e1d9" />
+
+            </android.support.design.widget.BottomNavigationView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_below="@+id/topBar"
+            android:layout_above="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="-10dp">
+            <fragment
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/activity_settings"
+                android:name="id.ac.polinema.todoretrofit.SettingsFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/bottomBar"
+            android:layout_alignParentBottom="true">
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
