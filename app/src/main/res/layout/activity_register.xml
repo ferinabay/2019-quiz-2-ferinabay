@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:paddingTop="35dp"
+    android:background="@drawable/drawable_gradient_animation_list">
 
     <LinearLayout
         android:orientation="vertical"
@@ -12,6 +15,16 @@
         android:paddingTop="56dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:textColor="@color/colorAccent"
+            android:text="REGISTER " />
 
         <!--  Username Label -->
         <android.support.design.widget.TextInputLayout
@@ -23,6 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorAccent"
                 android:hint="Username" />
         </android.support.design.widget.TextInputLayout>
 
@@ -36,6 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorAccent"
                 android:hint="Name" />
         </android.support.design.widget.TextInputLayout>
 
@@ -48,6 +65,8 @@
             <EditText android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorAccent"
                 android:inputType="textPassword"
                 android:hint="Password"/>
         </android.support.design.widget.TextInputLayout>
@@ -72,7 +91,9 @@
             android:gravity="center"
             android:textSize="16dip"
             android:onClick="handleLogin"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent"
             />
 
     </LinearLayout>
-</FrameLayout>
+</android.support.constraint.ConstraintLayout>
