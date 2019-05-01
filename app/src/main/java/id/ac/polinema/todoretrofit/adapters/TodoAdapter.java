@@ -1,6 +1,9 @@
 package id.ac.polinema.todoretrofit.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,10 +21,12 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> {
     private Context context;
     private List<Todo> items;
     private OnTodoClickedListener listener;
+    private OnTodoClickedDeleteListener listener1;
 
-    public TodoAdapter(Context context, OnTodoClickedListener listener) {
+    public TodoAdapter(Context context, OnTodoClickedListener listener, OnTodoClickedDeleteListener listener1) {
         this.context = context;
         this.listener = listener;
+        this.listener1 = listener1;
     }
 
     public void setItems(List<Todo> items) {
@@ -44,7 +49,8 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Todo todo = items.get(i);
-        viewHolder.bind(todo, listener);
+        viewHolder.bind(todo, listener, listener1);
+
     }
 
     @Override
@@ -59,12 +65,39 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> {
             todoText = itemView.findViewById(R.id.text_todo);
         }
 
-        public void bind(final Todo todo, final OnTodoClickedListener listener) {
+        public void bind(final Todo todo, final OnTodoClickedListener listener, final OnTodoClickedDeleteListener listener1) {
             todoText.setText(todo.getTodo());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onClick(todo);
+//                    listener.onClick(todo);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+                    builder.setTitle("Option");
+                    builder.setMessage("Apa yang ingin anda lakukan?");
+
+                    builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            listener.onClick(todo);
+                        }
+                    });
+
+                    builder.setNeutralButton("Delete", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            listener1.onClickDelete(todo);
+                        }
+                    });
+
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+
+                    builder.create().show();
                 }
             });
         }
@@ -72,5 +105,9 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> {
 
     public interface OnTodoClickedListener {
         void onClick(Todo todo);
+    }
+
+    public interface OnTodoClickedDeleteListener {
+        void onClickDelete(Todo todo);
     }
 }

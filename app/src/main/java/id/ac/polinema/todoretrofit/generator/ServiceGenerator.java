@@ -17,7 +17,7 @@ public class ServiceGenerator {
 //	private static SharedPreferences preferences = Application.getPreferences();
     private static Session session = Application.provideSession();
 
-	private static final String BASE_URL = "http://192.168.1.10:3000/";
+	private static final String BASE_URL = "http://192.168.1.25:3000/";
 
 	private static Retrofit.Builder builder = new Retrofit.Builder()
 		.baseUrl(BASE_URL)

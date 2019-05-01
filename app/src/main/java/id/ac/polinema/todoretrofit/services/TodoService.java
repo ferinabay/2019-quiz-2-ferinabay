@@ -24,6 +24,6 @@ public interface TodoService {
 	@PUT("/v1/todos/{id}")
 	Call<Envelope<Todo>> updateTodo(@Path("id") String id, @Body Todo todo);
 
-	@DELETE("/v1/todos/id")
-	Call<Envelope<Todo>> deleteTodo(@Path("id") String id);
+	@DELETE("/v1/todos/{id}")
+	Call<Envelope<Todo>> deleteTodo(@Path("id") int id);
 }

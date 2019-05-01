@@ -1,10 +1,18 @@
 package id.ac.polinema.todoretrofit.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.List;
 
 import id.ac.polinema.todoretrofit.Constant;
 import id.ac.polinema.todoretrofit.R;
@@ -15,6 +23,11 @@ import id.ac.polinema.todoretrofit.services.TodoService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+
+import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
 public class SaveTodoActivity extends AppCompatActivity {
 
@@ -24,10 +37,15 @@ public class SaveTodoActivity extends AppCompatActivity {
     private Todo todo;
     private int requestCode;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_todo);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         todoText = findViewById(R.id.input_todo);
         service = ServiceGenerator.createService(TodoService.class);
         Bundle extras = getIntent().getExtras();
@@ -51,7 +69,7 @@ public class SaveTodoActivity extends AppCompatActivity {
 
     private void handleAdd(View view) {
         todo = new Todo();
-        todo.setTodo(todoText.getText().toString());;
+        todo.setTodo(todoText.getText().toString());
         Call<Envelope<Todo>> addTodo = service.addTodo(todo);
         addTodo.enqueue(new Callback<Envelope<Todo>>() {
             @Override
@@ -99,4 +117,6 @@ public class SaveTodoActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
