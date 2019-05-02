@@ -23,7 +23,7 @@
             android:textSize="40sp"
             android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorWhite"
             android:text="LOGIN " />
 
         <!-- Username Label -->
@@ -35,8 +35,8 @@
             <EditText android:id="@+id/input_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="@color/colorAccent"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
                 android:hint="Username" />
         </android.support.design.widget.TextInputLayout>
 
@@ -49,8 +49,8 @@
             <EditText android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="@color/colorAccent"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
                 android:inputType="textPassword"
                 android:hint="Password"/>
         </android.support.design.widget.TextInputLayout>
@@ -73,8 +73,8 @@
             android:text="No account yet? Create one"
             android:gravity="center"
             android:textSize="16sp"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
             android:onClick="handleRegister"
             />
 

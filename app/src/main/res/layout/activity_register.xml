@@ -23,7 +23,7 @@
             android:textSize="40sp"
             android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorWhite"
             android:text="REGISTER " />
 
         <!--  Username Label -->
@@ -36,8 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="@color/colorAccent"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
                 android:hint="Username" />
         </android.support.design.widget.TextInputLayout>
 
@@ -51,8 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="@color/colorAccent"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
                 android:hint="Name" />
         </android.support.design.widget.TextInputLayout>
 
@@ -65,8 +65,8 @@
             <EditText android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="@color/colorAccent"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
                 android:inputType="textPassword"
                 android:hint="Password"/>
         </android.support.design.widget.TextInputLayout>
@@ -91,8 +91,8 @@
             android:gravity="center"
             android:textSize="16dip"
             android:onClick="handleLogin"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorAccent"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
             />
 
     </LinearLayout>

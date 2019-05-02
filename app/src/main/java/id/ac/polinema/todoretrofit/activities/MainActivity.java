@@ -8,12 +8,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import id.ac.polinema.todoretrofit.Application;
@@ -35,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnTod
     private Session session;
     private TodoService service;
     private TodoAdapter adapter;
+    private EditText search;
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
@@ -62,6 +71,28 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnTod
         }
 
         todosRecyclerView = findViewById(R.id.rv_todos);
+        search = findViewById(R.id.edt_search);
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(count == 0){
+                    loadTodos();
+                }else{
+                    cariTodos(search.getText().toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         todosRecyclerView.setLayoutManager(layoutManager);
         adapter = new TodoAdapter(this, this, this);
@@ -108,6 +139,26 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.OnTod
             }
         });
     }
+
+    private void cariTodos(String cari) {
+        Call<Envelope<List<Todo>>> todos = service.getTodos(cari, 1, 10);
+        todos.enqueue(new Callback<Envelope<List<Todo>>>() {
+            @Override
+            public void onResponse(Call<Envelope<List<Todo>>> call, Response<Envelope<List<Todo>>> response) {
+                if (response.code() == 200) {
+                    Envelope<List<Todo>> okResponse = response.body();
+                    List<Todo> items = okResponse.getData();
+                    adapter.setItems(items);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Envelope<List<Todo>>> call, Throwable t) {
+
+            }
+        });
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

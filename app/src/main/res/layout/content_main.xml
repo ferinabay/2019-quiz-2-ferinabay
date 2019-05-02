@@ -8,20 +8,28 @@
 	tools:context=".activities.MainActivity"
 	tools:showIn="@layout/activity_main">
 
-	<android.support.v7.widget.RecyclerView
-		android:id="@+id/rv_todos"
+	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_height="match_parent"
+		android:orientation="vertical">
 
-	</android.support.v7.widget.RecyclerView>
+		<EditText
+			android:id="@+id/edt_search"
+			android:drawableLeft="@drawable/ic_action_action_search"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="Search..."
+			android:textColor="@color/colorPrimaryDark"
+			android:textColorHint="@color/colorPrimaryDark"
+			android:tint="#000"
+			android:ems="10"/>
 
-	<!--<TextView-->
-		<!--android:layout_width="wrap_content"-->
-		<!--android:layout_height="wrap_content"-->
-		<!--android:text="Hello World!"-->
-		<!--app:layout_constraintBottom_toBottomOf="parent"-->
-		<!--app:layout_constraintLeft_toLeftOf="parent"-->
-		<!--app:layout_constraintRight_toRightOf="parent"-->
-		<!--app:layout_constraintTop_toTopOf="parent" />-->
+		<android.support.v7.widget.RecyclerView
+			android:id="@+id/rv_todos"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+		</android.support.v7.widget.RecyclerView>
+	</LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
